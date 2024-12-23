@@ -1,10 +1,14 @@
+#![allow(non_snake_case)]
+
 use raylib::prelude::*;
 
+mod chip8;
+use chip8::{Chip8, *};
+
 fn main() {
-    let (mut rl, thread) = raylib::init()
-        .size(640, 480)
-        .title("Hello, World")
-        .build();
+    let mychip8 = Chip8::new();
+
+    let (mut rl, thread) = raylib::init().size(640, 480).title("Hello, World").build();
 
     while !rl.window_should_close() {
         let mut d = rl.begin_drawing(&thread);
